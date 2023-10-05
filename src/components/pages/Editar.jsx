@@ -45,22 +45,6 @@ export const Editar = () => {
         if (datos.status === 'success') { setArticulos(datos.miArticulo) }
     }
 
-    return (
-        <div className='jumbo'>
-            <h1>Crear Artículo</h1>
-            <p>Formulario para editar artículos:{articulo.titulo}</p>
-
-            <strong>{resultado == 'exito' ? "Artículo editado con éxito" : ""}</strong>
-
-            <hr />
-
-            <form className='formulario' onSubmit={editarArticulo}>
-
-                <div className="form-group">
-                    <label htmlFor="titulo">Titulo</label>
-                    <input type="text" name="titulo" onChange={cambiado} defaultValue={articulo.titulo} />
-                </div>
-
                 <div className="form-group">
                     <label htmlFor="contenido">Contenido</label>
                     <textarea type="text" name="contenido" onChange={cambiado} defaultValue={articulo.contenido} />
@@ -74,7 +58,7 @@ export const Editar = () => {
                     <input type="file" name="file0" id="file" />
                 </div>
                 <input type="submit" value="Guardar" className='btn btn-success' />
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
