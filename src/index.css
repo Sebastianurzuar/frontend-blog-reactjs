@@ -1,5 +1,4 @@
 body {
-  background: #d1defa;
   font-family: sans-serif, Arial, Helvetica;
   text-align: center;
   padding: 0px;
@@ -17,7 +16,7 @@ body {
     "content content content lateral"
     "footer footer footer footer"
   ;
-  grid-template-rows: 100px 70px auto 70px;
+  grid-template-rows: 300px 70px auto 70px;
   grid-template-columns: 1fr 1fr 1fr 25%;
 }
 
@@ -25,22 +24,25 @@ body {
 
 .header {
   grid-area: header;
-
-  background: white;
-  text-align: left;
-  font-style: italic;
-
+  background: url("../images/PRARA.jpg");
+  background-size: cover;
+  align-items: center;
   display: flex;
   justify-content: center;
+  padding-top: 30px;
+
+
 }
 
-.logo {
-  background: linear-gradient(90deg, #03228f 10%, #0e73e4 100%);
-  width: 40px;
-  height: 40px;
-  border-radius: 300px;
-  margin-top: 30px;
+#logoyoga {
+  padding: 20px;
 }
+
+.logoimagenyoga img {
+  width: 190px;
+  height: 250px;
+}
+
 
 .play {
   width: 0;
