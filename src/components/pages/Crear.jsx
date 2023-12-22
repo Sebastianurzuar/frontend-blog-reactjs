@@ -3,21 +3,34 @@ import { useState } from 'react'
 import { UseForm } from '../../hooks/useForm'
 import { Global } from '../../helpers/Global'
 import { Peticion } from '../../helpers/Peticion'
+import useAuth from '../../hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
 
 export const Crear = () => {
 
     const { formulario, enviado, cambiado } = UseForm({})
     const [resultado, setResultado] = useState('')
+    const { auth } = useAuth()
+    console.log(auth)
+    const navigate = useNavigate();
 
     const guardarArticulos = async (e) => {
         e.preventDefault()
         //Recoger datos del formulario con hookuseForm
         let nuevoArticulo = (formulario)
         //Guardar articulo en el backend
-        const { datos } = await Peticion(Global.url + "crear", "POST", nuevoArticulo)
+        const { datos } = await fetch(Global.url + "crear", {
+            method: 'POST',
+            body: JSON.stringify(nuevoArticulo),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('token')
+            }
+        })
         console.log(datos)
         //Si todo ha ido bien entonces
         if (datos.status === 'success') {
+
             //Capturamos la imagen
             const fileInput = document.querySelector("#file")
             //Se adjunta la imagen a un formdata
@@ -32,6 +45,11 @@ export const Crear = () => {
         }
     }
 
+    const navigateToLogin = () => {
+        alert('Debes tener permisos especiales para crear un artículo. Porfavor, contacta con un administrador.')
+        navigate('/inicio');
+    }
+
     return (
         <div className='jumbo'>
             <h1>Crear Artículo</h1>
@@ -43,7 +61,7 @@ export const Crear = () => {
             <strong>{resultado == 'validacion' ? "No se ha validado la información!" : ""}</strong>
             <hr />
 
-            <form className='formulario' onSubmit={guardarArticulos}>
+            <form className='formulario' onSubmit={auth.rol == 'role_admin' ? guardarArticulos : navigateToLogin}>
 
                 <div className="form-group">
                     <label htmlFor="titulo">Titulo</label>

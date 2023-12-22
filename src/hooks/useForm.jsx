@@ -35,6 +35,7 @@ export const UseForm = (objetoInicial = {}) => {
     return {
         formulario,
         enviado,
-        cambiado
+        cambiado,
+        serializarFormulario
     }
 }

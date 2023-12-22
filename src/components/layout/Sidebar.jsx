@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 
 export const Sidebar = () => {
 
     const [buscar, setBuscar] = useState('')
     const navegar = useNavigate()
+    const { auth } = useAuth()
+
+
+
 
     const hacerBusqueda = (e) => {
         e.preventDefault()
@@ -15,6 +20,15 @@ export const Sidebar = () => {
 
     return (
         <aside className="lateral">
+            {auth.rol == 'role_admin' &&
+                <div className="search">
+                    <h3 className="title">Crear Post</h3>
+                    <a href="/crear/articulo">
+                        <input type='submit' value='asdsad' /> </a>
+
+                </div>
+            }
+
             <div className="search">
                 <h3 className="title">Buscador</h3>
                 <form onSubmit={hacerBusqueda}>
@@ -22,15 +36,7 @@ export const Sidebar = () => {
                     <input type='submit' value='Buscar' id="search" />
                 </form>
             </div>
-            <div className="add">
-                <h3 className="title">Añadir pelicula</h3>
-                <form>
-                    <input type="text" id="title" placeholder="Titulo" />
-                    <textarea id="description" placeholder="Descripción"></textarea>
-                    <input type="submit" id="save" value="Guardar" />
-                </form>
-            </div>
-        </aside>
+        </aside >
 
     )
 }
