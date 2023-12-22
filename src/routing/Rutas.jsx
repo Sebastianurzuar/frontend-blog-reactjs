@@ -62,12 +62,14 @@ export const Rutas = () => {
                     </Route>
 
 
+                    <Route path='*' element={<NormalLayout />}>
+                        <Route index element={
+                            <div className='jumbo'>
+                                <h1>Error 404</h1>
+                            </div>
+                        } />
+                    </Route>
 
-                    <Route path='*' element={
-                        <div className='jumbo'>
-                            <h1>Error 404</h1>
-                        </div>
-                    } />
                 </Routes>
                 <Sidebar />
             </AuthProvider>
