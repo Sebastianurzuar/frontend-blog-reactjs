@@ -11,7 +11,6 @@ export const Crear = () => {
     const { formulario, enviado, cambiado } = UseForm({})
     const [resultado, setResultado] = useState('')
     const { auth } = useAuth()
-    console.log(auth)
     const navigate = useNavigate();
 
     const guardarArticulos = async (e) => {
