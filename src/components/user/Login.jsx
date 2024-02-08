@@ -45,7 +45,7 @@ export const Login = () => {
   }
 
   return (
-    <>
+    <div className="jumbo">
       <header className='content__header content__header--public'>
         <h1>Login
         </h1>
@@ -70,6 +70,6 @@ export const Login = () => {
         </form>
       </div>
 
-    </>
+    </div>
   )
 }

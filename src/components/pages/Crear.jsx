@@ -4,14 +4,14 @@ import { UseForm } from '../../hooks/useForm'
 import { Global } from '../../helpers/Global'
 import { Peticion } from '../../helpers/Peticion'
 import useAuth from '../../hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
+
 
 export const Crear = () => {
 
     const { formulario, enviado, cambiado } = UseForm({})
     const [resultado, setResultado] = useState('')
     const { auth } = useAuth()
-    const navigate = useNavigate();
+
 
     const guardarArticulos = async (e) => {
         e.preventDefault()
@@ -44,10 +44,6 @@ export const Crear = () => {
         }
     }
 
-    const navigateToLogin = () => {
-        alert('Debes tener permisos especiales para crear un artículo. Porfavor, contacta con un administrador.')
-        navigate('/inicio');
-    }
 
     return (
         <div className='jumbo'>
@@ -60,7 +56,7 @@ export const Crear = () => {
             <strong>{resultado == 'validacion' ? "No se ha validado la información!" : ""}</strong>
             <hr />
 
-            <form className='formulario' onSubmit={auth.rol == 'role_admin' ? guardarArticulos : navigateToLogin}>
+            <form className='formulario' onSubmit={guardarArticulos}>
 
                 <div className="form-group">
                     <label htmlFor="titulo">Titulo</label>
@@ -70,6 +66,10 @@ export const Crear = () => {
                 <div className="form-group">
                     <label htmlFor="contenido">Contenido</label>
                     <textarea type="text" name="contenido" onChange={cambiado} />
+                </div>
+                <div>
+                    <label htmlFor="startDate">Start Date:</label>
+                    <input type="date" name="startDate" onChange={cambiado} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="file0">Imagen</label>

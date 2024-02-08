@@ -13,7 +13,12 @@ export const Logout = () => {
     //Setear los estados globales
     setAuth({})
     //Navigate hacia el login
-    navigate('/users/login')
+
+    // navigate('/users/login')
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
+
   }, [])
 
   return (

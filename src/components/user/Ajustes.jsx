@@ -77,7 +77,7 @@ export const Ajustes = () => {
 
 
   return (
-    <div>
+    <div className='jumbo'>
       <h1>Ajustes.</h1>
       <form onSubmit={updateUser}>
 

@@ -4,13 +4,13 @@ import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { Inicios } from '../components/pages/Inicios';
 import { Articulos } from '../components/pages/Articulos';
 import { Crear } from '../components/pages/Crear';
+import { Busqueda } from '../components/pages/Busqueda';
+import { Articulo } from '../components/pages/Articulo';
+import { Editar } from '../components/pages/Editar';
 // Layouts
 import { Header } from '../components/layout/Header';
 import { Sidebar } from '../components/layout/Sidebar';
 import { Footer } from '../components/layout/Footer';
-import { Busqueda } from '../components/pages/Busqueda';
-import { Articulo } from '../components/pages/Articulo';
-import { Editar } from '../components/pages/Editar';
 import { Login } from '../components/user/Login';
 import { PublicLayout } from '../components/layout/public/PublicLayout';
 import { AuthProvider } from '../components/context/AuthProvider';
@@ -21,6 +21,7 @@ import { Logout } from '../components/user/Logout';
 import { Ajustes } from '../components/user/Ajustes';
 import { Profile } from '../components/user/Profile';
 import { AdminLayout } from '../components/layout/private/AdminLayout';
+import { Izq } from '../components/layout/Izq';
 
 
 export const Rutas = () => {
@@ -71,6 +72,7 @@ export const Rutas = () => {
                     </Route>
 
                 </Routes>
+                <Izq />
                 <Sidebar />
             </AuthProvider>
             <Footer />

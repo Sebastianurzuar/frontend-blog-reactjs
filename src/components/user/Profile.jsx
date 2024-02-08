@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import avatar from '../../../public/images/img/user.png'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Global } from '../../helpers/Global'
+import { GetProfile } from '../../services/getProfile'
 
 export const Profile = () => {
 
@@ -9,30 +10,18 @@ export const Profile = () => {
   const [userProfile, setUserProfile] = useState({})
 
   useEffect(() => {
-    GetProfile()
-    console.log(userProfile)
-  }, [])
-
-  const GetProfile = async () => {
-    const request = await fetch(Global.url + 'user/profile/' + params.userId, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem('token')
-      }
+    GetProfile(params.userId).then(res => {
+      setUserProfile(res)
     })
-    const data = await request.json()
-    if (data.status == "success") {
-      setUserProfile(data.user)
-    }
-  }
+  }, [params.userId])
+
 
   return (
 
     <div className="profile-container">
 
       {userProfile.image != "default.png" && <img className="profile-image" src={Global.url + 'user/avatar/' + userProfile.image} alt="Imagen de perfil" />}
-      {userProfile.image == "default.png" && <img className="profile-image" src={avatar} className="list-end__img" alt="Imagen de perfil" />}
+      {userProfile.image == "default.png" && <img className="profile-image" src={avatar} alt="Imagen de perfil" />}
 
       <div className="profile-data">
         <span><strong>Nombre:</strong> {userProfile.name}</span>
@@ -45,7 +34,6 @@ export const Profile = () => {
         }
       </div>
     </div>
-
 
   )
 }

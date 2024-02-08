@@ -1,23 +1,29 @@
 body {
-  font-family: sans-serif, Arial, Helvetica;
+  font-family: Arial, Helvetica;
   text-align: center;
   padding: 0px;
   margin: 0px;
+  box-sizing: border-box;
+}
 
+* {
+  box-sizing: border-box;
 }
 
 .layout {
   width: 100%;
-  height: auto;
-
+  min-height: 100vh;
   display: grid;
+  background-image: url("../public/images/PRARA.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   grid-template-areas:
     "header header header header"
     "nav nav nav nav"
-    "content content content lateral"
-    "footer footer footer footer"
-  ;
-  grid-template-rows: 300px 70px auto 70px;
+    "izq content content lateral"
+    "footer footer footer footer";
+  grid-template-columns: 21.1% 28.9% 28.9% 21.1%;
 }
 
 /*ESTILOS CABECERA*/
@@ -26,84 +32,109 @@ body {
   grid-area: header;
   align-items: center;
   display: flex;
+  min-height: 300px;
   justify-content: center;
   padding-top: 30px;
-  background: url("../images/PRARA.jpg");
-  background-size: cover;
-  background-repeat: repeat;
 }
 
 #logoyoga {
   padding: 20px;
 }
 
-.logoimagenyoga img {
+.logoimagenyoga {
   width: 190px;
   height: 250px;
 }
 
 
-
-
-.play {
-  width: 0;
-  height: 0;
-  margin-top: 15px;
-  margin-left: 16px;
-  border-left: 12px solid white;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-}
-
-.header h1 {
-  margin-left: 15px;
-  margin-top: 30px;
-}
-
 /*ESTILOS DE LA BARRA DE NAVEGACIÓN*/
 
 .nav {
   grid-area: nav;
-  background: linear-gradient(90deg, #03228f 10%, #0e73e4 100%);
+  display: flex;
+  justify-content: space-around;
+
 }
 
 .nav>ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
   list-style: none;
+
+  align-items: center;
 }
 
+
 .nav li {
-  padding: 10px;
+  padding: 0px 40px;
 }
 
 .nav a {
   display: block;
-  margin-left: 30px;
-  margin-right: 30px;
-  font-size: 18px;
-  font-weight: lighter;
-  color: white;
+  color: black;
   text-decoration: none;
-  transition: all 300ms;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 50px;
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 4px;
+  position: relative;
+  width: 6em;
+  z-index: 2;
+
+  box-shadow: 0 0 0 7px hwb(108 62% 18%);
+  /* Utilizando box-shadow para simular un borde con gradiente */
+
+  transition: all 0.5s ease;
 }
 
 .nav a:hover {
   transform: scale(1.1, 1.1);
 }
 
+.bn39 {
+
+  /* Agrega una transición para todos los estilos */
+}
+
+.bn39:hover {
+  border-image-slice: 1;
+  /* Ajusta la cantidad de slicing según tus necesidades */
+
+}
+
+.bn39span {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.bn39span:hover {
+  transform: scale(1.1, 1.1);
+}
+
+
 /*ESTILOS PARA EL CONTENIDO PRINCIPAL*/
 
 .content {
+  padding: 10px;
   grid-area: content;
-  background: #f6f7f9;
-
+  background-color: rgb(247 247 247 /1);
+  border-radius: 12px;
+  box-shadow: rgb(0 0 0 / 40%) 0px 0px 50px 8px;
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-start;
   align-items: initial;
   flex-grow: 1;
+  margin: 20px auto;
+
+  width: 100%;
+  min-height: 750px;
+
 }
 
 .articulo-item {
@@ -136,12 +167,13 @@ body {
 }
 
 .jumbo {
-  width: 85%;
+  width: 93%;
+  height: 95%;
   padding: 55px;
   background: white;
   border-radius: 10px;
   box-shadow: 0px 0px 6px #ddd;
-  margin: 25px auto;
+  margin: 3% 4%;
   padding-bottom: 75px;
 }
 
@@ -152,7 +184,6 @@ body {
 
 .jumbo p {
   display: block;
-  margin-bottom: 40px;
 }
 
 .jumbo .mascara {
@@ -207,26 +238,67 @@ input[type="button"],
 
 /*ESTILOS BARRA LATERAL*/
 
-.lateral {
-  grid-area: lateral;
-  background: #f6f7f9;
-  border-left: 1px solid #ddd;
-  padding: 20px;
+
+#bar {
   min-height: 490px;
 }
 
-.lateral>div {
-  box-sizing: border-box;
-  width: 90%;
-  margin: 20px;
-  padding: 20px;
-  padding-top: 10px;
+
+.bar-right {
+  grid-area: lateral;
+  margin: 20px 4.5%;
+}
+
+.bar-left {
+  grid-area: izq;
+  margin: 20px 5% 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.search {
+  width: 81%;
+  max-width: 255px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: white;
   border-radius: 10px;
   box-shadow: 0px 0px 6px #ddd;
+  margin-bottom: 20px;
+  height: auto;
 }
 
-.lateral input[type="text"],
+.search.post {
+  padding: 10px 0px
+}
+
+.search.buscador {
+  padding: 20px;
+}
+
+.search.newcourse {}
+
+.newcourse__title {
+  font-weight: 600;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+
+}
+
+.search.newThree {
+  padding: 10px;
+}
+
+
+
+
+
+
+
+/* .lateral input[type="text"],
 .lateral input[type="text"],
 .lateral textarea,
 .edit_form input[type="text"],
@@ -248,14 +320,14 @@ input[type="button"],
 .edit_form {
   border-top: 1px solid #ddd;
   margin-top: 10px;
-}
+} */
 
 /*ESTILOS PARA EL PIE DE PÁGINA*/
 .footer {
   grid-area: footer;
 
-  background: #d1defa;
-  color: #454545;
+  /* background: #d1defa;
+  color: #454545; */
   border-top: 1px solid white;
   text-align: left;
   line-height: 68px;
@@ -267,10 +339,11 @@ input[type="button"],
   text-decoration: none;
 }
 
+/* ESTILOS PARA COMPONENTE PROFILE */
+
 .profile-container {
   max-width: 600px;
-  margin: 50px auto;
-  background-color: #fff;
+  margin: 50px 100px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -283,6 +356,12 @@ input[type="button"],
   margin-bottom: 20px;
 }
 
+.event-box {
+  background-color: red;
+  width: 200px;
+  margin-left: 150px
+}
+
 .profile-data {
   text-align: left;
   margin-bottom: 20px;
@@ -293,18 +372,113 @@ input[type="button"],
   margin-bottom: 10px;
 }
 
+
 .list-end__img {
   border-radius: 50%;
 }
 
+
+/* practica */
+.card__section {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+}
+
+.card__container {
+  box-sizing: border-box;
+  width: 300px;
+  height: auto;
+  margin: 20px 20px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.card__text {
+  background-color: black;
+}
+
+.card__cta {
+
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding-top: 15px;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
 @media (max-width: 1085px) {
-  .content {
+
+  /* .content {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+  } */
+  .content {
+    margin: 50px auto;
+    max-width: none;
   }
 
-  .articulo-item {
-    width: 80%;
+  .bar-right {
+    margin: 50px 4.5%;
   }
+
+  .bar-left {
+    margin: 50px 13.5%;
+  }
+
+  .header {
+    margin-top: -20px;
+    min-height: 250px;
+  }
+
+
+  .nav a {
+    font-size: 22px;
+    margin-bottom: -20px;
+  }
+
+
+}
+
+@media (max-width: 650px) {
+
+  .nav li {
+    padding: 0px 20px;
+  }
+
+  .nav a {
+    font-size: 22px;
+    margin-bottom: -20px;
+  }
+
+  .logoimagenyoga {
+    display: none;
+  }
+
+  .content {
+    margin: 50px 5%;
+    max-width: none;
+    width: 90%;
+  }
+
 }

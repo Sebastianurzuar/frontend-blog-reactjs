@@ -37,7 +37,7 @@ export const Register = () => {
 
         <div>
           <label htmlFor="name">Nombre</label>
-          <input type="text" name="name" onChange={cambiado} />
+          <input type="text" name="name" onChange={cambiado} required />
         </div>
         <div>
           <label htmlFor="surname">Apellidos</label>
@@ -45,7 +45,7 @@ export const Register = () => {
         </div>
         <div>
           <label htmlFor="nick">Nick</label>
-          <input type="text" name="nick" onChange={cambiado} />
+          <input type="text" name="nick" onChange={cambiado} required />
         </div>
         <div>
           <label htmlFor="email">Correo electrónico</label>
